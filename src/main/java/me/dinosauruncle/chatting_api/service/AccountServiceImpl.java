@@ -115,14 +115,18 @@ public class AccountServiceImpl extends AccountService{
     }
 
     @Override
-    public Account findById(String id) {
-        Account account = null;
+    public Map<String, Object> findById(String id) {
         try {
-            account =accountRepository.findById(id).get();
+            parameterMap.put("account", accountRepository.findById(id).get());
         } catch (NoSuchElementException e){
             String message = "존재하지 않는 아이디 입니다";
             logger.error(message);
+            parameterMap.put("message", message);
         }
-        return account;
+        return parameterMap;
+    }
+
+    public Map<String, Object> getParameterMap() {
+        return parameterMap;
     }
 }

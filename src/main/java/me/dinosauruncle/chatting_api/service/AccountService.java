@@ -21,7 +21,7 @@ public abstract class AccountService {
     public abstract Map<String, Object> findNameAndEmailReturnId(String name, String email);
     public abstract Map<String, Object> isId(String id);
     public abstract Map<String, Object> addKeyEndValue(String key, Object value);
-    public abstract Account findById(String id);
+    public abstract Map<String, Object> findById(String id);
     public abstract Map<String, Object> newAccountResult (Account account);
     public abstract Map<String, Object> login(Account account);
 }
