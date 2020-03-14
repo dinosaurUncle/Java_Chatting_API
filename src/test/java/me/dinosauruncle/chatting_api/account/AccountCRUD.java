@@ -19,13 +19,31 @@ public class AccountCRUD {
     @Test
     public void save(){
         Account account = new Account();
-        account.save("m05214", "박종훈", "pass", "0", "m05214@naver.com", "010-1111-2222");
-        accountService.newAccountResult(account);
+        account.save("IU4ever", "이지은", "pass", "1", "iu1234@naver.com", "010-1111-2222");
+        accountService.accountSaveAndUpdate(account);
     }
 
     @Test
     public void getAccount(){
-        accountService.findById("m05214").toString();
+        accountService.findById("m05214");
+    }
+
+    @Test
+    public void getAccounts(){
+        accountService.getAccounts();
+    }
+
+    @Test
+    public void update(){
+        accountService.findById("IU4ever");
+        Account account = new Account();
+        account.save("IU4ever", "이지은", "pass", "1", "iu1234@naver.com", "010-3333-4444");
+        accountService.accountSaveAndUpdate(account);
+    }
+
+    @Test
+    public void delete(){
+        accountService.deleteAccount("test123");
     }
 
 

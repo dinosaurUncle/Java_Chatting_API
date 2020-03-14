@@ -27,18 +27,17 @@ public class AccountServiceImpl extends AccountService{
     private Map<String, Object> parameterMap;
 
     @Override
-    public List<Account> getAccounts() {
-        return null;
-    }
-
-    @Override
-    public Account updateAccount(String id, Account account) {
-        return null;
+    public Map<String, Object> getAccounts() {
+        parameterMap.put("accounts", accountRepository.findAll());
+        return parameterMap;
     }
 
     @Override
     public Map<String, Object> deleteAccount(String id) {
-        return null;
+        Account account = accountRepository.findById(id).get();
+        parameterMap.put("account", account);
+        accountRepository.delete(account);
+        return parameterMap;
     }
 
     @Override
@@ -61,7 +60,7 @@ public class AccountServiceImpl extends AccountService{
     }
 
     @Override
-    public Map<String, Object> newAccountResult(Account account) {
+    public Map<String, Object> accountSaveAndUpdate(Account account) {
         parameterMap.put("account", account);
         try {
             passwordTransEncode(account);
